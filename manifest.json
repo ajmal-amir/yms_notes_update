@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "YMS Note Auto-Fill",
+  "version": "1.0",
+  "description": "Automatically fills blank YMS notes based on Visit Reason and vehicle status (IBLOAD, OBLOAD, IBEMPTY, OBEMPTY). Never overwrites existing notes.",
+  "permissions": ["scripting", "activeTab"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "YMS Note Auto-Fill"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://yms-na.amazon.com/*", "*://*.amazon.com/yms*", "*://*.amazon.com/*yms*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "host_permissions": [
+    "*://yms-na.amazon.com/*",
+    "*://*.amazon.com/*"
+  ]
+}
